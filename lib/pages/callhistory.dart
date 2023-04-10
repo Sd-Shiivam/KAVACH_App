@@ -30,7 +30,7 @@ class _CallhistoryState extends State<Callhistory> {
   }
 
   Future _callhistorycollector() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(seconds: 0));
   }
 
   @override
@@ -57,7 +57,7 @@ class _CallhistoryState extends State<Callhistory> {
                 child: Column(
                   children: [
                     Text("${entry.number}"),
-                    Text("${entry.callType.toString()}")
+                    Text("${entry.callType.toString().split('.')[1]}")
                   ],
                 ),
               )

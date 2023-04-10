@@ -31,7 +31,7 @@ class _MsghistoryState extends State<Msghistory> {
   // }
 
   // Future _callhistorycollector() async {
-  //   await Future.delayed(Duration(seconds: 2));
+  //   await Future.delayed(Duration(seconds: 0));
   // }
 
   @override

@@ -5,7 +5,8 @@ import 'package:app/pages/block.dart';
 import 'package:call_log/call_log.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
+import 'package:localstorage/localstorage.dart';
 // import 'package:sms/sms.dart';
 
 import 'callhistory.dart';
@@ -19,6 +20,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final LocalStorage storage = LocalStorage('storage');
   // SmsQuery query = new SmsQuery();
   final Uri url =
       Uri(scheme: "http", host: "172.26.144.101", port: 80, path: '/');
@@ -26,6 +28,7 @@ class _HomeState extends State<Home> {
   var body = json.encode({'name': 'Shivam', 'name2': 'Shivam'});
   var no_of_calllog = 0;
   var no_of_msglog = 0;
+
   @override
   void initState() {
     _totalnumbers().then((value) async {
@@ -35,17 +38,12 @@ class _HomeState extends State<Home> {
         no_of_calllog = result.length;
         // no_of_msglog = messages.length;
       });
-      // // htpp section
-      // print("Sending data");
-      // Map<String, String> body = {
-      //   'name': 'shivam',
-      // };
 
-      // Response r = await post(
-      //   url,
-      //   body: body,
-      // );
-      // // htpp section
+      String url = "http://172.26.144.101/kvh/slides";
+      final response = await http.get(Uri.parse(url));
+
+      var responseData = json.decode(response.body);
+      print(responseData[0]);
     });
     super.initState();
   }
@@ -64,12 +62,12 @@ class _HomeState extends State<Home> {
     var username = "Shivam";
     var status =
         "Your safety is our priority,\nWe're committed to protecting you.";
-    var misscalls = "3 Missed Calls";
+    var misscalls = "0 Missed Calls";
     var callhistory = "Call History";
-    var suspicious = "3 of $no_of_calllog Suspicious call\ndetected ";
+    var suspicious = "0 of $no_of_calllog Suspicious call\ndetected ";
     var message = "Messages";
-    var totalmess = "10 unread";
-    var suspiciousmess = "3 of $no_of_msglog Suspicious\nmessages detected ";
+    var totalmess = "0 unread";
+    var suspiciousmess = "0 of $no_of_msglog Suspicious\nmessages detected ";
     var spam = "Spam And\nBlocked";
     var link = "Links and UPI ID's";
     var totalspam = "10 Spam";
