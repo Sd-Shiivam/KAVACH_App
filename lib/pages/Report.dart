@@ -1,7 +1,10 @@
 import 'dart:convert';
 
+import 'package:app/components/popup.dart';
+import 'package:app/components/senddata.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 
 import '../components/bottomnav.dart';
 
@@ -19,7 +22,7 @@ class _ReportState extends State<Report> {
   String dropdownvalue = 'Number';
 
   // List of items in our dropdown menu
-  var items = ['Number', 'SMS', 'UPI ID', 'Links', 'Bitcoin'];
+  var items = ['Number', 'SMS', 'UPI ID', 'Links', 'Bitcoin Address'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -131,10 +134,12 @@ class _ReportState extends State<Report> {
                 child: Center(
                   child: ElevatedButton(
                       onPressed: () => {
-                            print(dropdownvalue +
-                                " " +
-                                topicController.text +
-                                remarksController.text),
+                            senddata_backend({
+                              'category': dropdownvalue,
+                              'detail': topicController.text,
+                              'remarks': remarksController.text
+                            }),
+                            popupbox(context, "", "Report Submited"),
                             topicController.clear(),
                             remarksController.clear()
                           },

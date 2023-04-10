@@ -60,9 +60,13 @@ class _MsghistoryState extends State<Msghistory> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Text("${entry.sender}"),
+                        Text(
+                          "${entry.sender}",
+                          textAlign: TextAlign.left,
+                        ),
                         Text(
                           "[${entry.date.toString().split(' ')[1]}]",
+                          textAlign: TextAlign.right,
                         ),
                       ],
                     ),

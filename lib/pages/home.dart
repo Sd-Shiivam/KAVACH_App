@@ -2,9 +2,11 @@ import 'dart:convert';
 
 import 'package:app/components/bottomnav.dart';
 import 'package:app/pages/block.dart';
+import 'package:call_log/call_log.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
+import 'package:sms/sms.dart';
 
 import 'callhistory.dart';
 import 'msghistory.dart';
@@ -17,30 +19,40 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  SmsQuery query = new SmsQuery();
   final Uri url =
-      Uri(scheme: "http", host: "172.26.144.208", port: 80, path: '/');
+      Uri(scheme: "http", host: "172.26.144.101", port: 80, path: '/');
   final Map<String, String> headers = {"Content-Type": "application/json"};
-  final Map<String, String> body = {'name': 'Shivam', 'name2': 'Shivam'};
-  // @override
-  // void initState() {
-  //   _getThingsOnStartup().then((value) {
-  //     print("Sending");
-  //     http
-  //         .post(url,
-  //             headers: headers,
-  //             body: json.encode(body),
-  //             encoding: Encoding.getByName('utf-8'))
-  //         .then(
-  //           (value) => print("Data recived: ${value.body}"),
-  //         );
-  //     print("Sended");
-  //   });
-  //   super.initState();
-  // }
+  var body = json.encode({'name': 'Shivam', 'name2': 'Shivam'});
+  var no_of_calllog = 0;
+  var no_of_msglog = 0;
+  @override
+  void initState() {
+    _totalnumbers().then((value) async {
+      final Iterable<CallLogEntry> result = await CallLog.query();
+      List<SmsMessage> messages = await query.getAllSms;
+      setState(() {
+        no_of_calllog = result.length;
+        no_of_msglog = messages.length;
+      });
+      // // htpp section
+      // print("Sending data");
+      // Map<String, String> body = {
+      //   'name': 'shivam',
+      // };
 
-  // Future _getThingsOnStartup() async {
-  //   await Future.delayed(Duration(seconds: 2));
-  // }
+      // Response r = await post(
+      //   url,
+      //   body: body,
+      // );
+      // // htpp section
+    });
+    super.initState();
+  }
+
+  Future _totalnumbers() async {
+    await Future.delayed(Duration(seconds: 0));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,10 +66,10 @@ class _HomeState extends State<Home> {
         "Your safety is our priority,\nWe're committed to protecting you.";
     var misscalls = "3 Missed Calls";
     var callhistory = "Call History";
-    var suspicious = "3 of 10 Suspicious call\n detected ";
+    var suspicious = "3 of $no_of_calllog Suspicious call\ndetected ";
     var message = "Messages";
     var totalmess = "10 unread";
-    var suspiciousmess = "3 of 10 Suspicious\n messages detected ";
+    var suspiciousmess = "3 of $no_of_msglog Suspicious\nmessages detected ";
     var spam = "Spam And\nBlocked";
     var link = "Links and UPI ID's";
     var totalspam = "10 Spam";
