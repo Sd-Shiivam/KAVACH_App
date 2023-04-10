@@ -70,7 +70,7 @@ class _HomeState extends State<Home> {
     var suspiciousmess = "0 of $no_of_msglog Suspicious\nmessages detected ";
     var spam = "Spam And\nBlocked";
     var link = "Links and UPI ID's";
-    var totalspam = "10 Spam";
+    var totalspam = "0 Spam";
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
