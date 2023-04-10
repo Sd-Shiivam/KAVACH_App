@@ -6,7 +6,7 @@ import 'package:call_log/call_log.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-import 'package:sms/sms.dart';
+// import 'package:sms/sms.dart';
 
 import 'callhistory.dart';
 import 'msghistory.dart';
@@ -19,7 +19,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  SmsQuery query = new SmsQuery();
+  // SmsQuery query = new SmsQuery();
   final Uri url =
       Uri(scheme: "http", host: "172.26.144.101", port: 80, path: '/');
   final Map<String, String> headers = {"Content-Type": "application/json"};
@@ -30,10 +30,10 @@ class _HomeState extends State<Home> {
   void initState() {
     _totalnumbers().then((value) async {
       final Iterable<CallLogEntry> result = await CallLog.query();
-      List<SmsMessage> messages = await query.getAllSms;
+      // List<SmsMessage> messages = await query.getAllSms;
       setState(() {
         no_of_calllog = result.length;
-        no_of_msglog = messages.length;
+        // no_of_msglog = messages.length;
       });
       // // htpp section
       // print("Sending data");

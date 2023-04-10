@@ -1,12 +1,36 @@
 import 'dart:convert';
 
-import 'package:app/components/popup.dart';
 import 'package:app/components/senddata.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
 import '../components/bottomnav.dart';
+
+popupbox(BuildContext context, title, data) {
+  // set up the buttons
+  Widget okButton = TextButton(
+    child: Text("Ok"),
+    onPressed: () {
+      Navigator.pop(context);
+    },
+  );
+
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text(title),
+    content: Text(data),
+    actions: [okButton],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}
 
 class Report extends StatefulWidget {
   const Report({Key? key}) : super(key: key);
@@ -83,7 +107,7 @@ class _ReportState extends State<Report> {
               alignment: Alignment.centerLeft,
               padding: EdgeInsets.only(top: 30, left: 30),
               child: Text(
-                "Please Enter $dropdownvalue",
+                "Please Enter ${dropdownvalue}",
                 style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,

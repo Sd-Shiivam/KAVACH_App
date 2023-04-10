@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:toggle_switch/toggle_switch.dart';
 import '../components/bottomnav.dart';
-import '../components/popup.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -14,6 +13,74 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  var call_protected = 1;
+  var sms_protected = 0;
+  var link_protected = 0;
+  var upi_id_protected = 1;
+  popupbox(BuildContext context, title, data, type) {
+    // set up the buttons
+    Widget cancleButton = TextButton(
+      child: Text("cancle"),
+      onPressed: () {
+        if (type == 1) {
+          setState(() {
+            if (call_protected == 0) {
+              call_protected = 1;
+            } else {
+              call_protected = 0;
+            }
+          });
+        } else if (type == 2) {
+          setState(() {
+            if (sms_protected == 0) {
+              sms_protected = 1;
+            } else {
+              sms_protected = 0;
+            }
+          });
+        } else if (type == 3) {
+          setState(() {
+            if (link_protected == 0) {
+              link_protected = 1;
+            } else {
+              link_protected = 0;
+            }
+          });
+        } else if (type == 4) {
+          setState(() {
+            if (upi_id_protected == 0) {
+              upi_id_protected = 1;
+            } else {
+              upi_id_protected = 0;
+            }
+          });
+        }
+        Navigator.pop(context);
+      },
+    );
+    Widget conformButton = TextButton(
+      child: Text("Conform"),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text(title),
+      content: Text(data),
+      actions: [cancleButton, conformButton],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -124,16 +191,24 @@ class _ProfileState extends State<Profile> {
                             activeFgColor: Colors.white,
                             inactiveBgColor: Colors.grey,
                             inactiveFgColor: Colors.white,
-                            initialLabelIndex: 1,
+                            initialLabelIndex: call_protected,
                             totalSwitches: 2,
                             labels: ['on', 'off'],
                             radiusStyle: true,
                             onToggle: (index) {
+                              setState(() {
+                                if (sms_protected == 0) {
+                                  sms_protected = 1;
+                                } else {
+                                  sms_protected = 0;
+                                }
+                              });
                               popupbox(
                                   context,
                                   "",
                                   "Phone Call protection is " +
-                                      (index == 0 ? "Enable" : "Disable"));
+                                      (index == 0 ? "Enable" : "Disable"),
+                                  1);
                             },
                           ),
                         ],
@@ -179,16 +254,22 @@ class _ProfileState extends State<Profile> {
                             activeFgColor: Colors.white,
                             inactiveBgColor: Colors.grey,
                             inactiveFgColor: Colors.white,
-                            initialLabelIndex: 1,
+                            initialLabelIndex: sms_protected,
                             totalSwitches: 2,
                             labels: ['on', 'off'],
                             radiusStyle: true,
                             onToggle: (index) {
+                              setState(() {
+                                sms_protected == 0
+                                    ? sms_protected = 1
+                                    : sms_protected = 0;
+                              });
                               popupbox(
                                   context,
                                   "",
                                   "SMS protection is " +
-                                      (index == 0 ? "Enable" : "Disable"));
+                                      (index == 0 ? "Enable" : "Disable"),
+                                  2);
                             },
                           ),
                         ],
@@ -234,16 +315,22 @@ class _ProfileState extends State<Profile> {
                             activeFgColor: Colors.white,
                             inactiveBgColor: Colors.grey,
                             inactiveFgColor: Colors.white,
-                            initialLabelIndex: 1,
+                            initialLabelIndex: link_protected,
                             totalSwitches: 2,
                             labels: ['on', 'off'],
                             radiusStyle: true,
                             onToggle: (index) {
+                              setState(() {
+                                link_protected == 0
+                                    ? link_protected = 1
+                                    : link_protected = 0;
+                              });
                               popupbox(
                                   context,
                                   "",
                                   "link protection is " +
-                                      (index == 0 ? "Enable" : "Disable"));
+                                      (index == 0 ? "Enable" : "Disable"),
+                                  3);
                             },
                           ),
                         ],
@@ -289,16 +376,22 @@ class _ProfileState extends State<Profile> {
                             activeFgColor: Colors.white,
                             inactiveBgColor: Colors.grey,
                             inactiveFgColor: Colors.white,
-                            initialLabelIndex: 1,
+                            initialLabelIndex: upi_id_protected,
                             totalSwitches: 2,
                             labels: ['on', 'off'],
                             radiusStyle: true,
                             onToggle: (index) {
+                              setState(() {
+                                upi_id_protected == 0
+                                    ? upi_id_protected = 1
+                                    : upi_id_protected = 0;
+                              });
                               popupbox(
                                   context,
                                   "",
                                   "UPI ID protection is " +
-                                      (index == 0 ? "Enable" : "Disable"));
+                                      (index == 0 ? "Enable" : "Disable"),
+                                  4);
                             },
                           ),
                         ],
