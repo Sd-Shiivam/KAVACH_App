@@ -64,15 +64,15 @@ class _HomeState extends State<Home> {
     var username = "Shivam";
     var status =
         "Your safety is our priority,\nWe're committed to protecting you.";
-    var misscalls = "3 Missed Calls";
+    var misscalls = "0 Missed Calls";
     var callhistory = "Call History";
-    var suspicious = "3 of $no_of_calllog Suspicious call\ndetected ";
+    var suspicious = "0 of $no_of_calllog Suspicious call\ndetected ";
     var message = "Messages";
-    var totalmess = "10 unread";
-    var suspiciousmess = "3 of $no_of_msglog Suspicious\nmessages detected ";
+    var totalmess = "0 unread";
+    var suspiciousmess = "0 of $no_of_msglog Suspicious\nmessages detected ";
     var spam = "Spam And\nBlocked";
     var link = "Links and UPI ID's";
-    var totalspam = "10 Spam";
+    var totalspam = "0 Spam";
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(

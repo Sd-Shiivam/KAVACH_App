@@ -1,5 +1,10 @@
 import 'dart:convert';
 
+import 'package:app/pages/Report.dart';
+import 'package:app/pages/block.dart';
+import 'package:app/pages/callhistory.dart';
+import 'package:app/pages/msghistory.dart';
+import 'package:call_log/call_log.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -19,7 +24,7 @@ class _SearchdataState extends State<Searchdata> {
   Widget build(BuildContext context) {
     var call = "Calls";
     var message = "Messages";
-    var email = "Emails";
+    var report = "Report";
     var bitcoin = "bitcoin";
     return Scaffold(
       body: SingleChildScrollView(
@@ -96,7 +101,12 @@ class _SearchdataState extends State<Searchdata> {
                           child: Column(
                             children: [
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Callhistory()));
+                                },
                                 child: Container(
                                   padding: EdgeInsets.only(right: 190),
                                   child: Icon(
@@ -123,7 +133,12 @@ class _SearchdataState extends State<Searchdata> {
                           child: Column(
                             children: [
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Msghistory()));
+                                },
                                 child: Container(
                                   padding: EdgeInsets.only(right: 190),
                                   child: Icon(
@@ -150,11 +165,16 @@ class _SearchdataState extends State<Searchdata> {
                           child: Column(
                             children: [
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Report()));
+                                },
                                 child: Container(
                                   padding: EdgeInsets.only(right: 190),
                                   child: Icon(
-                                    Icons.email,
+                                    Icons.report,
                                     size: 35,
                                     color: Colors.black,
                                   ),
@@ -164,7 +184,7 @@ class _SearchdataState extends State<Searchdata> {
                                 alignment: Alignment.centerLeft,
                                 padding: EdgeInsets.only(top: 15, bottom: 20),
                                 child: Text(
-                                  "$email",
+                                  "$report",
                                   style: TextStyle(
                                       fontSize: 17,
                                       fontWeight: FontWeight.bold),
@@ -181,7 +201,12 @@ class _SearchdataState extends State<Searchdata> {
                           child: Column(
                             children: [
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Callhistory()));//bitcoin function
+                                },
                                 child: Container(
                                   padding: EdgeInsets.only(right: 190),
                                   child: Icon(
@@ -208,7 +233,12 @@ class _SearchdataState extends State<Searchdata> {
                           child: Column(
                             children: [
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Callhistory()));//links function
+                                },
                                 child: Container(
                                   padding: EdgeInsets.only(right: 190),
                                   child: Icon(
@@ -235,7 +265,12 @@ class _SearchdataState extends State<Searchdata> {
                           child: Column(
                             children: [
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>block() ));
+                                },
                                 child: Container(
                                   padding: EdgeInsets.only(right: 190),
                                   child: Icon(
