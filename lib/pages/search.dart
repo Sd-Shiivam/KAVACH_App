@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:app/pages/Report.dart';
+import 'package:app/pages/bitcoin.dart';
 import 'package:app/pages/block.dart';
 import 'package:app/pages/callhistory.dart';
 import 'package:app/pages/msghistory.dart';
@@ -9,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import '../components/bottomnav.dart';
+import 'links.dart';
 
 class Searchdata extends StatefulWidget {
   const Searchdata({Key? key}) : super(key: key);
@@ -205,7 +207,7 @@ class _SearchdataState extends State<Searchdata> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => Callhistory()));//bitcoin function
+                                          builder: (context) => bitcoinaddress()));//bitcoin function
                                 },
                                 child: Container(
                                   padding: EdgeInsets.only(right: 190),
@@ -237,7 +239,7 @@ class _SearchdataState extends State<Searchdata> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => Callhistory()));//links function
+                                          builder: (context) => link()));//links function
                                 },
                                 child: Container(
                                   padding: EdgeInsets.only(right: 190),
