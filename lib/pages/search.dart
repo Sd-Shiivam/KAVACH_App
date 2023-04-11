@@ -207,7 +207,8 @@ class _SearchdataState extends State<Searchdata> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => bitcoinaddress()));//bitcoin function
+                                          builder: (context) =>
+                                              bitcoin_verfy())); //bitcoin function
                                 },
                                 child: Container(
                                   padding: EdgeInsets.only(right: 190),
@@ -239,7 +240,8 @@ class _SearchdataState extends State<Searchdata> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => link()));//links function
+                                          builder: (context) =>
+                                              link())); //links function
                                 },
                                 child: Container(
                                   padding: EdgeInsets.only(right: 190),
@@ -271,7 +273,7 @@ class _SearchdataState extends State<Searchdata> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>block() ));
+                                          builder: (context) => block()));
                                 },
                                 child: Container(
                                   padding: EdgeInsets.only(right: 190),

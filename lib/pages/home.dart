@@ -38,12 +38,6 @@ class _HomeState extends State<Home> {
         no_of_calllog = result.length;
         // no_of_msglog = messages.length;
       });
-
-      String url = "http://172.26.144.101/kvh/slides";
-      final response = await http.get(Uri.parse(url));
-
-      var responseData = json.decode(response.body);
-      print(responseData[0]);
     });
     super.initState();
   }

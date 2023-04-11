@@ -162,7 +162,7 @@ class _ReportState extends State<Report> {
                               'category': dropdownvalue,
                               'detail': topicController.text,
                               'remarks': remarksController.text
-                            }),
+                            }, 'kvh/reports'),
                             popupbox(context, "", "Report Submited"),
                             topicController.clear(),
                             remarksController.clear()

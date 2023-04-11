@@ -197,10 +197,10 @@ class _ProfileState extends State<Profile> {
                             radiusStyle: true,
                             onToggle: (index) {
                               setState(() {
-                                if (sms_protected == 0) {
-                                  sms_protected = 1;
+                                if (call_protected == 0) {
+                                  call_protected = 1;
                                 } else {
-                                  sms_protected = 0;
+                                  call_protected = 0;
                                 }
                               });
                               popupbox(

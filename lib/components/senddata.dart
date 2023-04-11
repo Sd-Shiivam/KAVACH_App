@@ -1,8 +1,8 @@
 import 'package:http/http.dart';
 
-void senddata_backend(jsondata) async {
-  final Uri url = Uri(
-      scheme: "http", host: "172.26.144.101", port: 80, path: 'kvh/reports');
+Future<String> senddata_backend(jsondata, upath) async {
+  final Uri url =
+      Uri(scheme: "http", host: "172.26.144.101", port: 80, path: upath);
   final Map<String, String> headers = {"Content-Type": "application/json"};
   // htpp section
   print("Sending data");
@@ -12,4 +12,5 @@ void senddata_backend(jsondata) async {
     url,
     body: body,
   );
+  return r.body.toString();
 }
