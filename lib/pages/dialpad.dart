@@ -59,8 +59,8 @@ class _dialpadState extends State<dialpad> {
                                 backgroundColor: Colors.white,
                                 child: CircleAvatar(
                                   radius: 45,
-                                  backgroundImage:
-                                      AssetImage("assets/images/profile.jpg"),
+                                  backgroundImage: AssetImage(
+                                      "assets/images/call_history.png"),
                                   backgroundColor: Colors.green,
                                 ),
                               ),

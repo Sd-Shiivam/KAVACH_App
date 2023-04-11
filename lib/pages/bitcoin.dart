@@ -19,7 +19,7 @@ class _bitcoin_verfyState extends State<bitcoin_verfy> {
   var result = "";
   Future<String> senddata_bitcoin(jsondata, upath) async {
     final Uri url =
-        Uri(scheme: "http", host: "172.26.144.101", port: 80, path: upath);
+        Uri(scheme: "http", host: "192.168.19.155", port: 80, path: upath);
     final Map<String, String> headers = {"Content-Type": "application/json"};
     // htpp section
     print("Sending data");
